@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{{ url_for('index') }}" class="btn btn-warning home">Главная</a>
+    <a href="{{ url_for('live') }}" class="btn btn-info refresh">Создать новую жизнь</a>
+    <br>
+    <div class="counter">{{ life.counter }}</div>
+    <br>
+    <table class="world">
+        {% for i in life.world %}
+            <tr>
+                {% for j in i %}
+{#                    {% print(life.world[i]) %}#}
+                    {% if i[j] %}
+                        <td class="cell living-cell"></td>
+                    {% elif life.old_world[life.world.index(i)][j] and not i[j] %}
+                        <td class="cell dead-cell"></td>
+                    {% else %}
+                        <td class="cell"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}<script>setInterval(() => window.location.reload(), 1000);</script>
+{% endblock %}
