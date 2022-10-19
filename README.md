@@ -1,1 +1,1 @@
-# stepik_first_project
+# stepik_flask_project
