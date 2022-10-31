@@ -1,1 +1,1 @@
-# stepik_flask_project
+# project life
